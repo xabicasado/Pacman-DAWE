@@ -167,7 +167,7 @@ var GF = function(){
 
 	this.loadLevel = function(){
 		jQuery.ajax({
-	        url : "../res/levels/1.txt",
+	        url : "res/levels/1.txt",
 	        dataType: "text",
 	        success : function (data) {
 	            var lineas = data.split("\n");
