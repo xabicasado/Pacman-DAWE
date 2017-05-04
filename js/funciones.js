@@ -13,8 +13,7 @@ var GF = function(){
     var lastTime;
     var fpsContainer;
     var fps, delta, oldTime = 0;
-    var eatPill, eating, siren, waza, die, eatGhost, ghostEaten;
- 
+
     //  variable global temporalmente para poder testear el ejercicio
     inputStates = { left: false, up: false, right: false, down: false, space: false };
 
@@ -400,9 +399,7 @@ var GF = function(){
     		this.sprite[2].update(delta);
     	else if(this.velY > 0)
     		this.sprite[3].update(delta);
-    	else
-    		this.sprite[0].update(delta);
-     	
+    	
 		this.nearestRow = parseInt((this.y + thisGame.TILE_HEIGHT/2)/thisGame.TILE_HEIGHT);
 		this.nearestCol = parseInt((this.x + thisGame.TILE_WIDTH/2)/thisGame.TILE_WIDTH);
 		
@@ -749,11 +746,11 @@ var GF = function(){
 															ready = new Howl({
 											    				src: ['res/sounds/ready.mp3'],
 																volume: 1,
+																autoplay: true,
 																onload: function() {
-																	ready.play();
+																	requestAnimationFrame(mainLoop); // comenzar animación
 																},
 																onend: function() {
-																	requestAnimationFrame(mainLoop); // comenzar animación
 																	siren.play();
 																}
 															});
