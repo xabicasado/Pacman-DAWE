@@ -729,8 +729,6 @@ var GF = function(){
 							volume: 1,
 							loop: true,
 							onload: function() {
-								siren.play();
-
 								waza = new Howl({
 				    				src: ['res/sounds/waza.mp3'],
 									volume: 1,
@@ -748,7 +746,17 @@ var GF = function(){
 									    				src: ['res/sounds/die.mp3'],
 														volume: 1,
 														onload: function() {
-															requestAnimationFrame(mainLoop); // comenzar animación
+															ready = new Howl({
+											    				src: ['res/sounds/ready.mp3'],
+																volume: 1,
+																onload: function() {
+																	ready.play();
+																},
+																onend: function() {
+																	requestAnimationFrame(mainLoop); // comenzar animación
+																	siren.play();
+																}
+															});
 														}
 													});
 												}
